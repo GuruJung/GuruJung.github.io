@@ -1,0 +1,28 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Numba 사용자 매뉴얼
+  levels: two
+#  version: 6.0
+  folders:
+
+  - title: Numba 5분 가이드
+    url: /numba_user_5minguide.html
+    output: web, pdf
+
+  - title: 개요
+    url: /numba_user_overview.html
+    output: web, pdf
+
+  - title: 설치
+    url: /numba_user_installing.html
+    output: web, pdf
+
+  - title: "@jit과 함께 파이썬 코드 컴파일하기"
+    url: /numba_user_jit.html
+    output: web
+
+  - title: "@generated_jit으로 유연하게 전문화하기"
+    url: /numba_user_generated-jit.html
+    output: web
