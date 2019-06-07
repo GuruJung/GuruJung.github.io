@@ -1,5 +1,5 @@
 ---
-title: '`@generated_jit`으로 유연하게 전문화하기'
+title: '[Numba 사용자 매뉴얼] 1.5 `@generated_jit`으로 유연하게 전문화하기'
 strapline: "generated_jit 데코레이터는 사용자가 컴파일 시점에 특정 구현의 선택을 제어할 수 있게 해주면서도 JIT 함수의 빠른 실행시간 속도를 그대로 유지시킨다."
 header:
   overlay_image: /assets/images/index/python.jpg
@@ -19,7 +19,7 @@ last_modified_at:
 
 [numba.jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) 데코레이터는 많은 경우에 유용하지면,
 가끔씩 입력 타입에 따라 구현이 다른 함수가 필요할 때가 있다.
-[numba.generated\_jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.generated_jit) 데코레이터는 사용자가 컴파일 시점에 
+[numba.generated_jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.generated_jit) 데코레이터는 사용자가 컴파일 시점에 
 특정 구현의 선택을 제어할 수 있게 해주면서도 JIT 함수의 빠른 실행시간 속도를 그대로 유지시킨다.
 
 ## 예제
@@ -31,7 +31,7 @@ last_modified_at:
 -   이 외의 타입들은 누락 값이라는 게 없다.
 
 
-[numba.generated\_jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.generated_jit)
+[numba.generated_jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.generated_jit)
 데코레이터를 사용하여 이런 컴파일-시간 로직을 쉽게 구현할 수 있다:
 
 ```python

@@ -1,5 +1,5 @@
 ---
-title: "Numpy 유니버설 함수 만들기" 
+title: "[Numba 사용자 매뉴얼] 1.6 Numpy 유니버설 함수 만들기" 
 strapline: "Numba의 vectorize는 스칼라 입력 인수를 취하는 파이썬 함수를 Numpy ufuncs으로 사용될 수 있도록 한다."
 header:
   overlay_image: /assets/images/index/python.jpg

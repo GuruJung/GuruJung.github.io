@@ -1,6 +1,6 @@
 ---
-title: '`@cfunc`으로 C 콜백 함수 만들기'
-strapline: "Numba는 numba.jitclass 데코레이터를 통해 클래스에 대한 코드 생성을 지원한다."
+title: '[Numba 사용자 매뉴얼] 1.8 `@cfunc`으로 C 콜백 함수 만들기'
+strapline: "파이썬으로 쓰여진 비즈니스 로직을 C나 C++로 쓰여진 네이티브 라이브러리에 제공하기 위해 콜백을 작성해야 하는 경우가 있다."
 header:
   overlay_image: /assets/images/index/python.jpg
 categories:
@@ -17,55 +17,57 @@ mathjax: true
 last_modified_at: 
 ---
 
-Interfacing with some native libraries (for example written in C or C++)
-can necessitate writing native callbacks to provide business logic to
-the library. The [numba.cfunc]{role="func"} decorator creates a compiled
-function callable from foreign C code, using the signature of your
-choice.
+파이썬으로 쓰여진 비즈니스 로직을 C나 C++로 쓰여진 네이티브 라이브러리에 제공하기 위해 콜백을 작성해야 하는 경우가 있다.
+이 때문에 네이티브 라이브러리와의 연동은 필수적이다.
+`numba.cfunc()` 데코레이터는 사용자가 지정한 시그너처로 외부 C 코드로부터 호출가능한, 컴파일된 함수를 생성한다.
 
-## Basic usage
+## 기본 사용법
 
-The `@cfunc` decorator has a similar usage to `@jit`, but with an
-important difference: passing a single signature is mandatory. It
-determines the visible signature of the C callback:
+`@cfunc` 데코레이터의 사용법은 `@jit`의 경우와 유사하지만 중요한 차이가 있다:
+함수 시그너처를 반드시 전달해야 한다는 것이다.
+해당 시그너처는 C 콜백 함수의 시그너처에 일대일로 대응된다:
 
+```python
     from numba import cfunc
 
     @cfunc("float64(float64, float64)")
     def add(x, y):
         return x + y
+```
 
-The C function object exposes the address of the compiled C callback as
-the [\~CFunc.address]{role="attr"} attribute, so that you can pass it to
-any foreign C or C++ library. It also exposes a [ctypes]{role="mod"}
-callback object pointing to that callback; that object is also callable
-from Python, making it easy to check the compiled code:
+C 함수 개체는 CFunc 개체으로서 [address](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#CFunc.address) 속성은 컴파일된 C 콜백 함수의 주소를 가리킨다.
+그래서 그것을 외부 C/C++ 라이브러리에 전달할 수 있다.
+또한 C 함수 개체는 [ctypes](https://docs.python.org/3/library/ctypes.html#module-ctypes) 콜백 개체도 노출시키는데, 콜백 개체는 또한 파이썬으로부터 호출가능하다.
+이는 컴파일된 코드를 검사할 때 편리하다:
 
+```python
     @cfunc("float64(float64, float64)")
     def add(x, y):
         return x + y
 
     print(add.ctypes(4.0, 5.0))  # prints "9.0"
+```
 
-## Example
+## 예제
 
-In this example, we are going to be using the `scipy.integrate.quad`
-function. That function accepts either a regular Python callback or a C
-callback wrapped in a [ctypes]{role="mod"} callback object.
+이 예제에서는 `scipy.integrate.quad` 함수를 사용하려 한다.
+이 함수는 일반 파이썬 콜백 또는 [ctypes](https://docs.python.org/3/library/ctypes.html#module-ctypes) 콜백 개체로 래핑된 C 콜백을 취한다.
 
-Let\'s define a pure Python integrand and compile it as a C callback:
+순서 파이썬 integrand를 정의하고 그것을 C콜백으로 컴파일하자:
 
+```python
     >>> import numpy as np
     >>> from numba import cfunc
     >>> def integrand(t):
             return np.exp(-t) / t**2
        ...:
     >>> nb_integrand = cfunc("float64(float64)")(integrand)
+```
 
-We can pass the `nb_integrand` object\'s [ctypes]{role="mod"} callback
-to `scipy.integrate.quad` and check that the results are the same as
-with the pure Python function:
+`nb_integrand` 개체의 [ctypes](https://docs.python.org/3/library/ctypes.html#module-ctypes) 콜백을 `scipy.integrate.quad`에 전달하고,
+그 결과가 순수 파이썬 함수를 전달한 것과 같은 결과를 보이는지 확인하자:
 
+```python
     >>> import scipy.integrate as si
     >>> def do_integrate(func):
             """
@@ -77,30 +79,28 @@ with the pure Python function:
     (0.14849550677592208, 3.8736750296130505e-10)
     >>> do_integrate(nb_integrand.ctypes)
     (0.14849550677592208, 3.8736750296130505e-10)
+```
 
-Using the compiled callback, the integration function does not invoke
-the Python interpreter each time it evaluates the integrand. In our
-case, the integration is made 18 times faster:
+컴파일된 콜백을 사용함으로써, integration 함수는 integrand를 평가할 때마다 파이썬 인터프리터를 호출할 필요가 없어졌다.
+우리 경우에 integration은 18배 더 빨리 실행되었다:
 
+```python
     >>> %timeit do_integrate(integrand)
     1000 loops, best of 3: 242 µs per loop
     >>> %timeit do_integrate(nb_integrand.ctypes)
     100000 loops, best of 3: 13.5 µs per loop
+```
 
-## Dealing with pointers and array memory
+## 포인터와 배열 메모리 다루기
 
-A less trivial use case of C callbacks involves doing operation on some
-array of data passed by the caller. As C doesn\'t have a high-level
-abstraction similar to Numpy arrays, the C callback\'s signature will
-pass low-level pointer and size arguments. Nevertheless, the Python code
-for the callback will expect to exploit the power and expressiveness of
-Numpy arrays.
+좀 더 복잡한 C콜백 이용 사례는 호출자로부터 전달된 데이터 배열에 대한 연산을 수행할 때이다.
+C는 Numpy 배열과 같은 고수준의 추상화가 없기 때문에 C 콜백 시그너처는 저수준의 포인터와 배열 크기 인수를 전달할 것이다. 
+그럼에도 불구하고, 콜백에 대한 파이썬 코드는 Numpy 배열과 같은 파워와 표현력을 기대한다.
 
-In the following example, the C callback is expected to operate on 2-d
-arrays, with the signature
-`void(double *input, double *output, int m, int n)`. You can implement
-such a callback thusly:
+다음 예제에서 C 콜백은 `void(double *input, double *output, int m, int n)` 시그너처로 2D 배열상에 작동하도록 기대된다.
+아래와 같은 콜백을 구현할 수 있다:
 
+```python
     from numba import cfunc, types, carray
 
     c_sig = types.void(types.CPointer(types.double),
@@ -114,22 +114,20 @@ such a callback thusly:
         for i in range(m):
             for j in range(n):
                 out_array[i, j] = 2 * in_array[i, j]
+```
 
-The [numba.carray]{role="func"} function takes as input a data pointer
-and a shape and returns an array view of the given shape over that data.
-The data is assumed to be laid out in C order. If the data is laid out
-in Fortran order, [numba.farray]{role="func"} should be used instead.
+[numba.carray](http://numba.pydata.org/numba-doc/latest/reference/utils.html#numba.carray) 함수는 데이터 포인터와 모양(크기)를 취하여 해당 데이터에 대한, 주어진 모양의 배열 뷰를 리턴한다.
+데이터는 C에서 사용하는 순서로 놓여져 있다고 가정한다. 
+데이터가 포트란에서 사용하는 순서로 놓여져 있다면 [numba.farray](http://numba.pydata.org/numba-doc/latest/reference/utils.html#numba.farray)를 사용하여야 한다.
 
-## Signature specification
+## 시그너처 사양
 
-The explicit `@cfunc` signature can use any
-[Numba types \<numba-types\>]{role="ref"}, but only a subset of them
-make sense for a C callback. You should generally limit yourself to
-scalar types (such as `int8` or `float64`) or pointers to them (for
-example `types.CPointer(types.int8)`).
+`@cfunc`에서 사용하는 시그너처는 아무 [Numba 타입](http://numba.pydata.org/numba-doc/latest/reference/types.html#numba-types)이나 이용할 수 있는데, 
+실제로는 그 중 일부만 의미있게 쓰인다.
+보통은 `int8`이나 `float64`와 같은 스칼라 타입이나 `types.CPointer(types.int8)`와 같은 그들에 대한 포인터 정도를 시그니처에 사용한다.
 
-## Compilation options
+## 컴파일 옵션
 
-A number of keyword-only arguments can be passed to the `@cfunc`
-decorator: `nopython` and `cache`. Their meaning is similar to those in
-the `@jit` decorator.
+많은 키워드 인수가 `@cfunc` 데코레이터에 전달될 수 있다: `nopython` and `cache`. 
+`@jit` 데코레이터에서 쓰일 때와 의미가 비슷하다.
+

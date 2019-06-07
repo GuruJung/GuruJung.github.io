@@ -2,3 +2,5 @@
 *.lock
 .DS_Store
 /_site/
+minimal-mistakes-jekyll.gemspec
+/.sass-cache/

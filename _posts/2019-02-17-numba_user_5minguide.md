@@ -1,5 +1,5 @@
 ---
-title: '[Numba] 5분 가이드'
+title: '[Numba 사용자 매뉴얼] 1.1 5분 가이드'
 strapline: "Numba는 NumPy 배열과 함수 및 루프를 사용하는 파이썬 코드에 가장 잘 작동하는 즉석 컴파일러이다."
 header:
   overlay_image: /assets/images/index/python.jpg

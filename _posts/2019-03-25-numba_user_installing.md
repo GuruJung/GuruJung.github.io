@@ -1,5 +1,5 @@
 ---
-title: "설치"
+title: "[Numba 사용자 매뉴얼] 1.3 설치"
 strapline: "Numba는 파이썬 2.7과 3.5 버전 이후와 호환되고, Numpy 버전은 1.7부터 1.15까지 호환된다."
 header:
   overlay_image: /assets/images/index/python.jpg

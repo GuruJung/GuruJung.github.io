@@ -1,5 +1,5 @@
 ---
-title: '@jit과 함께 파이썬 코드 컴파일하기'
+title: '[Numba 사용자 매뉴얼] 1.4 @jit과 함께 파이썬 코드 컴파일하기'
 strapline: "Numba는 코드 생성을 위한 몇가지 유틸리티를 제공하는데, 그중에서도 중심은 numba.jit() 데코레이터이다."
 header:
   overlay_image: /assets/images/index/python.jpg
@@ -161,7 +161,7 @@ Numba에게 함수 컴파일 결과를 파일 기반의 캐쉬로 쓰도록 지�
         return x + y
 ```
 
-### `parallel` {#parallel_jit_option}
+### `parallel` {#parallel-jit-option}
 
 병렬화하기 쉬운 논리를 가진 함수에서 해당 로직을 자동 병렬화(와 관련된 최적화)를 하도록 활성화한다.
 지원되는 연산 목록을 볼려면 [병렬화](/dev/numba_user_parallel#numba-parallel)를 참조한다.

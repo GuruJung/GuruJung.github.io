@@ -1,5 +1,5 @@
 ---
-title: "@jitclass로 파이썬 클래스 컴파일하기"
+title: "[Numba 사용자 매뉴얼] 1.7 @jitclass로 파이썬 클래스 컴파일하기"
 strapline: "Numba는 numba.jitclass 데코레이터를 통해 클래스에 대한 코드 생성을 지원한다."
 header:
   overlay_image: /assets/images/index/python.jpg

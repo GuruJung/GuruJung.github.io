@@ -1,5 +1,5 @@
 ---
-title: "개요"
+title: "[Numba 사용자 매뉴얼] 1.2 개요"
 strapline: 
 header:
   overlay_image: /assets/images/index/python.jpg
