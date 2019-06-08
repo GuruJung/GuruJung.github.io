@@ -70,3 +70,8 @@ last_modified_at:
 [numba.jit](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) 데코레이터와 동일한 키워드 인수를 지원한다.
 예를 들어, `nopython`과 `cache` 옵션을 지원한다.
 
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

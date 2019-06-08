@@ -131,3 +131,8 @@ C는 Numpy 배열과 같은 고수준의 추상화가 없기 때문에 C 콜백 
 많은 키워드 인수가 `@cfunc` 데코레이터에 전달될 수 있다: `nopython` and `cache`. 
 `@jit` 데코레이터에서 쓰일 때와 의미가 비슷하다.
 
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

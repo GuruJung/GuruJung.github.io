@@ -199,3 +199,8 @@ ctypes/cffi/cython 상호운용성:
 Numba는 [Nvidia CUDA](https://developer.nvidia.com/cuda-zone)와 (실험적으로) [AMD ROC](https://rocm.github.io/) GPU를 지원한다.
 순수 파이썬으로 커널만 작성하기만 하면 대신 Numba가 계산과 데이터를 핸들링한다 (또는 당신이 직접적으로 이것을 핸들링할 수도 있다).
 [CUDA](http://numba.pydata.org/numba-doc/latest/cuda/index.html#cuda-index)와 [ROC](http://numba.pydata.org/numba-doc/latest/roc/index.html#roc-index)에 Numba 관련 문서가 있다.
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

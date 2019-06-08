@@ -175,3 +175,8 @@ Numba에게 함수 컴파일 결과를 파일 기반의 캐쉬로 쓰도록 지�
 
 **Note:** [@jit과 함께하는 자동 병렬화](/dev/numba_user_parallel#numba-parallel)
 {: .notice--warning}
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

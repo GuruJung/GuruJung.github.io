@@ -17,19 +17,6 @@ mathjax: true
 last_modified_at: 
 ---
 
-[parallel_jit_option]: /dev/numba_user_jit#parallel-jit-option "병렬"
-[numba.jit]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit 
-[numba.vectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize
-[numba.guvectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize
-[case-study-array-expressions]: http://numba.pydata.org/numba-doc/latest/developer/rewrites.html#case-study-array-expressions "케이스 스터디: 배열 표현"
-[Numpy ufuncs]: http://numba.pydata.org/numba-doc/latest/reference/numpysupported.html#supported-ufuncs
-[nopython 모드]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-nopython-mode
-[numba.DUFunc]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.DUFunc
-[NUMBA_PARALLEL_DIAGNOSTICS]: http://numba.pydata.org/numba-doc/latest/reference/envvars.html#envvar-NUMBA_PARALLEL_DIAGNOSTICS
-[Dispatcher.parallel_diagnostics]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#Dispatcher.parallel_diagnostics
-[Parallel FAQs]: /dev/numba_user_faq#parallel-faqs "병렬화 관련 FAQs"
-[Numba IR]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-numba-ir
-
 [numba.jit]을 위한 [parallel_jit_option] 옵션은 함수(일부분)를 자동적으로 병렬화 및 최적화를 할려고 시도하는
 Numba 변환 패스를 활성화시킨다.
 현재 이 기능은 CPU 기반일 때만 작동한다.
@@ -443,3 +430,22 @@ Numba 변환 패스를 활성화시킨다.
 **See also:** 
 [parallel_jit_option], [Parallel FAQs]
 {: .notice--info}
+
+[parallel_jit_option]: /dev/numba_user_jit#parallel-jit-option "병렬"
+[numba.jit]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit 
+[numba.vectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize
+[numba.guvectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize
+[case-study-array-expressions]: http://numba.pydata.org/numba-doc/latest/developer/rewrites.html#case-study-array-expressions "케이스 스터디: 배열 표현"
+[Numpy ufuncs]: http://numba.pydata.org/numba-doc/latest/reference/numpysupported.html#supported-ufuncs
+[nopython 모드]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-nopython-mode
+[numba.DUFunc]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.DUFunc
+[NUMBA_PARALLEL_DIAGNOSTICS]: http://numba.pydata.org/numba-doc/latest/reference/envvars.html#envvar-NUMBA_PARALLEL_DIAGNOSTICS
+[Dispatcher.parallel_diagnostics]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#Dispatcher.parallel_diagnostics
+[Parallel FAQs]: /dev/numba_user_faq#parallel-faqs "병렬화 관련 FAQs"
+[Numba IR]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-numba-ir
+
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

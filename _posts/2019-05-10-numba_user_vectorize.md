@@ -280,3 +280,8 @@ Numba가 `long` 정수를 지원하는 루프를 생성했음을 알 수 있다.
 
 다양한 타입 시그너처에 대해서 각각에 대해 정확한 커널이 필요하다면
 [numba.vectorize](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터처럼 그들을 미리 지정하고, 동적 컴파일에 의존해서는 안 된다.
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

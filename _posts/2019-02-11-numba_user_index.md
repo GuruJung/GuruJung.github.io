@@ -14,7 +14,7 @@ classes: wide
 toc: true
 comments: true
 mathjax: true
-last_modified_at: 2019-05-22
+last_modified_at: 2019-06-06
 ---
 
 ## 목차 
@@ -26,4 +26,9 @@ last_modified_at: 2019-05-22
 6. [Numpy 유니버설 함수 만들기](/dev/numba_user_vectorize)
 7. [`@jitclass`로 파이썬 클래스 컴파일하기](/dev/numba_user_jitclass)
 8. [`@cfunc`으로 C 콜백 함수 만들기](/dev/numba_user_cfunc)
+9. [조기 코드 컴파일](/dev/numba_user_pycc)
+10. [`@jit`과 함께 하는 자동 병렬화](/dev/numba_user/parallel)
 
+**Note:** 
+이 글은 Numba user manual 0.42 버전을 번역한 글입니다.
+{: .notice--warning}

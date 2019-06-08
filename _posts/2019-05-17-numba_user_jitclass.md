@@ -91,3 +91,8 @@ jitclass 인스턴스가 인터프리터에서 다루어지게 될 때 jitclass�
 -   인터프리터상에서 jitclass 인스턴스를 다루는 것은 아직 최적화되어 있지 않다.
 -   jitclass는 CPU상에서만 지원된다. (추후 GPU에 대해서도 지원될 것이다.)
 
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

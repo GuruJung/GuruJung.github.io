@@ -172,3 +172,8 @@ Numba 개발 목적으로 소스 설치를 하고 있다면 [빌드 환경](http
                                   pci bus id: 1
 
 (길이 제약으로 인해 출력이 잘렸음)
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}
