@@ -11,7 +11,7 @@ tag:
   - "translation"
   - "python"
 classes: wide
-toc: true
+toc: false
 comments: true
 mathjax: true
 last_modified_at: 
@@ -24,8 +24,6 @@ last_modified_at:
 ----------------------------------------------------------
 
 Numba 0.39부터 함수 인수도 JIT 컴파일된 함수라면 가능하다:
-As of Numba 0.39, you can, so long as the function argument has also
-been JIT-compiled:
 
 ```python
     @jit(nopython=True)
