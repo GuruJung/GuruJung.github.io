@@ -214,3 +214,9 @@ timefunc(correct, "numba (%d threads)" % nthreads, func_nb_mt, a, b)
 ```
 
 [nogil]: /dev/numba_user_jit#jit-nogil
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}
+

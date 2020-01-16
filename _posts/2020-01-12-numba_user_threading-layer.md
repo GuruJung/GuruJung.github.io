@@ -165,3 +165,8 @@ Numba 진단 명령 `numba -s`는 `__Threading Layer Information__` 절을 가�
 
 
 [numba-threading-layer-setting-mech]: #numba-threading-layer-setting-mech "쓰레딩 설정"
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

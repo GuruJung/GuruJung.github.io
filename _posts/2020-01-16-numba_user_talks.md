@@ -69,3 +69,8 @@ Numba 애플리케이션에 관한 토크
     Numba - Stan Seibert
     ([Notebooks](https://github.com/ContinuumIO/gtc2018-numba))
 
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

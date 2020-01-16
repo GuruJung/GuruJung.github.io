@@ -1043,3 +1043,8 @@ $ cuda-memcheck python chk_cuda_debug.py
 [NUMBA_GDB_BINARY]: https://numba.pydata.org/numba-doc/latest/reference/envvars.html#envvar-NUMBA_GDB_BINARY
 [NUMBA_ENABLE_CUDASIM]: https://numba.pydata.org/numba-doc/latest/reference/envvars.html#envvar-NUMBA_ENABLE_CUDASIM
 [CUDA Simulator documentation]: https://numba.pydata.org/numba-doc/latest/cuda/simulator.html#simulator "CUDA 시뮬레이터 문서"
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

@@ -235,3 +235,8 @@ Anaconda 배포본의 경우 SciPy는 인텔의 MKL 기반으로 빌드되어 �
 그 결과 Numba는 고성능의 선형 대수를 수행할 수 있다.
 
 [numba-parallel-supported]: /dev/numba_user_parallel#numba-parallel-supported "지원되는 연산"
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

@@ -293,3 +293,8 @@ compiler.](http://dl.acm.org/citation.cfm?id=2833162&dl=ACM&coll=DL)
 [nopython mode]: https://numba.pydata.org/numba-doc/latest/glossary.html#term-nopython-mode "nopython 모드"
 [releasing the GIL]: /dev/numba_user_jit#jit-nogil "GIL 해제하기"
 [ahead-of-time compilation]: /dev/numba_user_pycc#pycc
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}

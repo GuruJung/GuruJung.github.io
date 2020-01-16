@@ -70,7 +70,7 @@ Numba의 주 사용 케이스는 [적기(Just-in-Time) 컴파일](http://numba.p
 
 생성된 모듈은 세 개의 함수를 가진다: `multf`, `multi`와 `square`.
 `multi`는 32비트 정수(`i4`)상에 작동하는 반면에
-`multf`와 `square`는 배정도 실수(`f8`에 대해서 작동한다.
+`multf`와 `square`는 배정도 실수(`f8`)에 대해서 작동한다.
 
 ```python
     >>> import my_module

@@ -97,3 +97,8 @@ random number generator states do not synchronize; i.e. nopython-mode and object
 본 기능은 실험적이다. 별도의 공지 없이 기능이 변경될 수 있다.
 {: .notice--warning}
 
+
+**Note:** 
+이 글은 Numba user manual을 번역한 글입니다.
+[목차](/dev/numba_user_index)를 보려면 [여기](/dev/numba_user_index)를 클릭하세요.
+{: .notice--warning}
