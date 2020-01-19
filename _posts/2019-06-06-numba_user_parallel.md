@@ -431,8 +431,8 @@ Numba 변환 패스를 활성화시킨다.
 [parallel_jit_option], [Parallel FAQs]
 {: .notice--info}
 
-[parallel_jit_option]: /dev/numba_user_jit#parallel-jit-option "병렬"
-[numba.jit]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit 
+[parallel_jit_option]: /dev/numba_user_jit#parallel-jit-option "parallel"
+[numba.jit]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit "jit"
 [numba.vectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize
 [numba.guvectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize
 [case-study-array-expressions]: http://numba.pydata.org/numba-doc/latest/developer/rewrites.html#case-study-array-expressions "케이스 스터디: 배열 표현"

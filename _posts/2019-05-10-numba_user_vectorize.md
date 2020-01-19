@@ -19,30 +19,30 @@ last_modified_at:
 
 ## `@vectorize` 데코레이터 {#the-vectorize-decorator}
 
-Numba의 vectorize는 스칼라 입력 인수를 취하는 파이썬 함수를 Numpy 
-[ufuncs](http://docs.scipy.org/doc/numpy/reference/ufuncs.html)으로 사용될 수 있도록 한다.
+vectorize는 스칼라 입력 인수를 취하는 파이썬 함수를 Numpy 
+[ufunc](http://docs.scipy.org/doc/numpy/reference/ufuncs.html)으로 사용될 수 있도록 한다.
 Numpy ufunc을 만드는 것은 보통 C 코드 작성과 연관이 되어 있어서 쉬운 과정이 아니다.
 Numba는 이 작업을 쉽게 만든다.
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터를 사용하여 
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터를 사용하여 
 Numba는 순수 파이썬 함수를 ufunc 으로 컴파일할 수 있다.
 이렇게 해서 만들어진 ufunc은 C로 쓰여진 전통적인 ufunc 만큼 빠르게 Numpy 배열을 다룬다.
 
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터를 사용하여 
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터를 사용하여 
 배열보다는 스칼라를 입력으로 취하는 함수를 만들자.
 Numba는 실제 입력에 대해 효율적인 반복 루프(*커널*)를 생성할 것이다.
 
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터는 두 가지 모드를 가지고 있다:
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터는 두 가지 모드를 가지고 있다:
 
--   데코레이션-타임 컴파일레이션: 데코레이터에게 하나 이상의 타입 시그너쳐를 넘기면, Numpy 유니버설 함수(ufunc)를 작성하고 있는 것입니다. 이번절의 나머지는 데코레이션-타임 컴파일레이션을 사용한 ufunc 만들기를 기술한다.
--   연기된, 호출-타임 컴파일레이션: 어떤 시그너쳐도 넘기지 않으면, 데코레이터는 당신에게 Numba 동적 유니버설 함수
-    [numba.DUFunc](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.DUFunc)를 줄것이다.
+-   데코레이션-타임 컴파일레이션: 데코레이터에게 하나 이상의 타입 시그너쳐를 넘기면, Numpy 유니버설 함수(ufunc)를 리턴한다.
+-   호출-타임 컴파일레이션: 어떤 시그너쳐도 넘기지 않으면, 데코레이터는 Numba 동적 유니버설 함수
+    [numba.DUFunc](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.DUFunc)를 리턴한다.
     Numba 동적 유니버설 함수는 새롭게 출현한 입력 타입과 함께 호출되면 그때서야 동적으로 새로운 커널을 컴파일한다.
     \"[dynamic-universal-functions](numba_user_vectorize.html#dynamic-universal-functions)\" 절에서 좀더 깊게 이 모드를 기술한다.
 
 위에서 언급된 것처럼 
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터에 시그너쳐를 넘기면, 
-당신의 함수는 Numpy ufunc으로 컴파일될 것이다. 
-단지 한 개의 시그너쳐만 넘겨지는 기초적인 경우를 보자:
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터에 시그너쳐를 넘기면, 
+파이썬 함수는 Numpy ufunc으로 컴파일될 것이다. 
+단지 한 개의 시그너쳐만 넘겨지는 간단한 경우를 보자:
 
 ```python
     from numba import vectorize, float64
@@ -114,7 +114,7 @@ Numba는 실제 입력에 대해 효율적인 반복 루프(*커널*)를 생성�
 **Callout:** [ufunc의 표준 특징들](http://docs.scipy.org/doc/numpy/reference/ufuncs.html#ufunc)(NumPy 문서)을 참고한다.
 {: .notice--info}
 
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터는 여러 ufunc 타겟을 지원한다:
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 데코레이터는 여러 ufunc 타겟을 지원한다:
 
 | 타겟                | 설명           | 
 |----|----|
@@ -134,12 +134,13 @@ Numba는 실제 입력에 대해 효율적인 반복 루프(*커널*)를 생성�
 
 ## `@guvectorize` 데코레이터 {#guvectorize}
 
-[numba.vectorize()](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize)가 한 번에 한 요소씩 작업하는 ufunc을 작성하는데 쓰이는 반면에
-[numba.guvectorize()](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize) 데코레이터는 한 걸음 더 나아가서 입력 배열의 임의의 수의 요소들에 대해서 작동하는 ufunc을 작성하는 데 쓰인다.
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize)가 한 번에 한 요소씩 작업하는 ufunc을 작성하는데 쓰이는 반면에
+[guvectorize](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize) 데코레이터는 한 걸음 더 나아가서 입력 배열의 임의의 수의 요소들에 대해서 작동하는 ufunc을 작성하는 데 쓰인다.
 또한 다른 차원의 배열을 취하거나 리턴할 수 도 있다.
 전형적인 예는 메디안 또는 컨볼루션 필터를 실행하는 것이다.
 
-[numba.vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 함수와는 다르게 [numba.guvectorize](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize) 함수는 결과값을 반환하지 않는다:
+[vectorize](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize) 함수와는 다르게 
+[guvectorize](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize) 함수는 결과값을 반환하지 않는다:
 대신에 배열 인수를 취하고, 함수는 해당 배열에 결과를 저장한다.
 이것은 해당 배열이 실질적으로 NumPy 디스패치 원리에 의해 할당되기 때문이다.
 
@@ -158,7 +159,7 @@ Numba는 실제 입력에 대해 효율적인 반복 루프(*커널*)를 생성�
 
 -   심볼 형태의 입력과 출력 *레이아웃* 선언: `(n),()->(n)`은 NumPy에게 함수는 *n*-개 요소 일차원 배열와 스칼라(빈 튜플 `()`로 표기된)를 취해서
     *n*-개 요소의 일차원 배열을 반환한다; 
--   `@vectorize`와 유사하게, 지원되는 구체적인 *시그니처* 목록; 여기서는 유일하게 `int64` 배열만 지원된다.
+-   `@vectorize`와 유사한 *시그니처* 목록; 이 예제에서는 `int64` 경우를 보여주고 있다.
 
 **Note:** 1D 배열 타입은 또한 스칼라 인수(`()` 모양을 가진 것들)를 받아 들일수 있다. 위의 예제에서 두번째 인수는 또한 `int64[:]`로 선언될 수 있었다. 그 경우, 값은 `y[0]`로 액세스된다.
 {: .notice--warning}
