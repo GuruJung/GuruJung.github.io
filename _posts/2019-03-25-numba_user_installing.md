@@ -11,7 +11,7 @@ tag:
   - "translation"
   - "python"
 classes: wide
-toc: true
+toc: false
 comments: true
 mathjax: true
 last_modified_at: 
@@ -33,7 +33,7 @@ Numba는 파이썬 2.7과 3.5 버전 이후와 호환되고, Numpy 버전은 1.7
 
 `@jit`을 이용한 [자동 병렬화](/dev/numba_user_parallel)는 64비트 플랫폼에서만 가능하고, 윈도우 파이썬 2.7에서는 지원되지 않는다.
 
-## x86/x86\_64/POWER 플랫폼에 conda를 이용하여 설치하기
+## x86/x86_64/POWER 플랫폼에 conda를 이용하여 설치하기
 
 Numba를 설치하고 업데이트하는 가장 쉬운 방법은, Anaconda사가 유지하는 크로스 플랫폼 패키지 관리자이자 소프트웨어 배포 프로그램인 `conda`를 사용하는 것이다.
 [Anaconda](https://www.anaconda.com/download)를 이용하여 한번에 다 설치하거나 
