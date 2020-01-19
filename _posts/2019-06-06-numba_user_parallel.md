@@ -1,6 +1,6 @@
 ---
 title: '[Numba 사용자 매뉴얼] 1.10 `@jit`과 함께 하는 자동 병렬화'
-strapline: "numba.jit을 위한 병렬 옵션은 함수(일부분)를 자동적으로 병렬화 및 최적화를 할려고 시도하는 Numba 변환 패스를 활성화시킨다."
+strapline: "jit parallel 옵션을 켜면 Numba 변환 패스를 활성화시켜서 함수 일부분을 자동적으로 병렬화 및 최적화를 한다."
 header:
   overlay_image: /assets/images/index/python.jpg
 categories:
@@ -17,7 +17,7 @@ mathjax: true
 last_modified_at: 
 ---
 
-[jit][numba.jit]을 위한 [parallel][parallel_jit_option] 옵션을 켜면 Numba 변환 패스를 활성화시켜서 함수 일부분을 자동적으로 병렬화 및 최적화를 한다.
+[jit][numba.jit] [parallel][parallel_jit_option] 옵션을 켜면 Numba 변환 패스를 활성화시켜서 함수 일부분을 자동적으로 병렬화 및 최적화를 한다.
 현재 이 기능은 CPU 타겟일 때만 작동한다.
 
 배열에 스칼라 값을 더하는 연산은 병렬 의미(parallel semantics)를 가지고 있다고 알려져 있다.
