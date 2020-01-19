@@ -128,18 +128,15 @@ Numba가 쓰레딩 레이어를 찾고 로딩하는 기본 방식은 라이브�
 이 경우 [numba-threading-layer-setting-mech]에 쓰레딩 레이어 이름을 제공하면 된다.
 옵션 및 필수 패키지는 다음과 같다:
 
-| Threading Layer   | Platform | Requirements                          |
-| Name              |          |                                       |
+| Threading Layer Name  | Platform | Requirements                          |
 |----|----|
 | `tbb`             | All     | The `tbb` package                     |
 |                   |         | (`$ conda install tbb`)               |
 |----|----|
 | `omp`             | Linux   | GNU OpenMP libraries (very likely     |
 |                   |         | this will already exist)              |
-|                   |         |                                       |
 |                   | Windows | MS OpenMP libraries (very likely this |
 |                   |         | will already exist)                   |
-|                   |         |                                       |
 |                   | OSX     | The `intel-openmp` package            |
 |                   |         | (`$ conda install intel-openmp`)      |
 |----|----|

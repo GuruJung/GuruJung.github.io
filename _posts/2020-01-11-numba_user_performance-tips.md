@@ -70,7 +70,7 @@ C나 포트란에 친숙한 사용자들의 경우 이런 스타일로 파일썬
  `@njit` 데코레이션이 없을 때는 vectorized 함수(ident_np)가 몇십~몇백배 더 빠르게 실행되지만,
  `@njit`으로 데코레이션을 하면, 위 두 코드 모두 거의 동일한 속도를 보여준다.
 
-| Function Name   | \@njit | Execution time |
+| Function Name   | @njit | Execution time |
 |----|----|----|
 | `ident_np`      | No    | > 0.581s       |
 |----|----|----|

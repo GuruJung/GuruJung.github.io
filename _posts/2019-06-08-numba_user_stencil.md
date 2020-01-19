@@ -11,7 +11,7 @@ tag:
   - "translation"
   - "python"
 classes: wide
-toc: true
+toc: false
 comments: true
 mathjax: true
 last_modified_at: 
@@ -26,7 +26,6 @@ last_modified_at:
 ## 기본 사용법
 
 `@stencil` 데코레이터의 예제:
-
 ```python
     from numba import stencil
 
