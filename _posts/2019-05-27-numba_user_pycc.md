@@ -18,7 +18,7 @@ last_modified_at:
 ---
 
 Numba의 주 사용 케이스는 [적기(Just-in-Time) 컴파일](http://numba.pydata.org/numba-doc/latest/glossary.html#term-just-in-time-compilation)이지만
-[조기(Ahead-of-Time) 컴파일](http://numba.pydata.org/numba-doc/latest/glossary.html#term-ahead-of-time-compilation)(AOT)도 지원한다.
+[조기(Ahead-of-Time) 컴파일](http://numba.pydata.org/numba-doc/latest/glossary.html#term-ahead-of-time-compilation)도 지원한다.
 
 ## 개요 
 

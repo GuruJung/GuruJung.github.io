@@ -11,7 +11,7 @@ tag:
   - "translation"
   - "python"
 classes: wide
-toc: true
+toc: false
 comments: true
 mathjax: true
 last_modified_at: 
@@ -20,7 +20,7 @@ last_modified_at:
 **Note:** jitlcass 지원은 현재 초기 상태이다. 모든 특징들이 구현된 것은 아니다.
 {: .notice--warning}
 
-Numba는 numba.jitclass 데코레이터를 통해 클래스에 대한 코드 생성을 지원한다. 
+jitclass 데코레이터를 통해 클래스에 대한 코드 생성을 지원한다. 
 각 필드에 대한 타입 정의와 함께 본 데코레이터를 사용하면 주어진 클래스는 최적화되도록 마킹된다.
 이렇게 만들어진 클래스를 우리는 jitclass라고 부른다.
 jitclass의 모든 함수가 nopython 함수로 컴파일된다. 

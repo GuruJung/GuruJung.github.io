@@ -53,7 +53,7 @@ C 함수 개체는 CFunc 개체으로서 [address](http://numba.pydata.org/numba
 이 예제에서는 `scipy.integrate.quad` 함수를 사용하려 한다.
 이 함수는 일반 파이썬 콜백 또는 [ctypes](https://docs.python.org/3/library/ctypes.html#module-ctypes) 콜백 개체로 래핑된 C 콜백을 취한다.
 
-순서 파이썬 integrand를 정의하고 그것을 C콜백으로 컴파일하자:
+순수 파이썬 integrand를 정의하고 그것을 C콜백으로 컴파일하자:
 
 ```python
     >>> import numpy as np
