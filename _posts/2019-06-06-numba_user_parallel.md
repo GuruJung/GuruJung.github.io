@@ -17,7 +17,7 @@ mathjax: true
 last_modified_at: 
 ---
 
-[numba.jit]을 위한 [parallel_jit_option] 옵션은 함수(일부분)를 자동적으로 병렬화 및 최적화를 할려고 시도하는
+[jit][numba.jit]을 위한 [parallel][parallel_jit_option] 옵션은 함수(일부분)를 자동적으로 병렬화 및 최적화를 할려고 시도하는
 Numba 변환 패스를 활성화시킨다.
 현재 이 기능은 CPU 기반일 때만 작동한다.
 
