@@ -17,30 +17,29 @@ mathjax: true
 last_modified_at: 
 ---
 
-[jit][numba.jit]을 위한 [parallel][parallel_jit_option] 옵션은 함수(일부분)를 자동적으로 병렬화 및 최적화를 할려고 시도하는
-Numba 변환 패스를 활성화시킨다.
-현재 이 기능은 CPU 기반일 때만 작동한다.
+[jit][numba.jit]을 위한 [parallel][parallel_jit_option] 옵션을 켜면 Numba 변환 패스를 활성화시켜서 함수 일부분을 자동적으로 병렬화 및 최적화를 한다.
+현재 이 기능은 CPU 타겟일 때만 작동한다.
 
-배열에 스칼라 값을 더하는 함수와 같은 사용자 정의 함수안의 일부 연산은 병렬 의미(parallel semantics)를 가지고 있다고 알려져 있다.
-사용자 프로그램은 그런 연산을 매우 많이 포함하고 있다.
+배열에 스칼라 값을 더하는 연산은 병렬 의미(parallel semantics)를 가지고 있다고 알려져 있다.
+사용자 프로그램은 일반적으로 그런 연산을 매우 많이 포함하고 있다.
 그런 연산 각각을 개별로 병렬화시키는 접근은 캐시 문제로 인해 낮은 성능을 보인다.
 대신에 자동 병렬화를 활성화할 때 Numba는 사용자 프로그램에서 그런 연산들을 발견하고 인접한 것들을 묶으려는 시도를 하여
 한 개이상의 커널이 자동으로 병렬로 실행되도록 한다.
 이런 과정은 사용자 프로그램의 수정없이 완전 자동으로 수행된다.
-이런 특징은 병렬 커널을 만드는데 사람의 노력이 필요한 Numba의 [numba.vectorize]나 [numba.guvectorize]의 메커니즘과 대비된다.
+이런 특징은 병렬 커널을 만드는데 사람의 노력이 필요한 Numba의 [vectorize][numba.vectorize]나 [guvectorize][numba.guvectorize]의 메커니즘과 대비된다.
 
 ## 지원되는 연산 {#numba-parallel-supported}
 
 본 절에서 우리가 현재 지원하는 병렬 의미를 가지고 있는 모든 배열 연산의 목록을 나열한다.
 
-1.  [case-study-array-expressions]에 의해 지원되는 모든 numba 배열 연산.
+1.  [케이스 스터디: 배열 표현][case-study-array-expressions]에 의해 지원되는 모든 numba 배열 연산.
     Numpy 배열간, 배열과 스칼라간의 공통 산수 함수와 Numpy ufunc도 포함한다.
     이들은 자주 요소별 또는 포인트별 배열 연산이라고 불리기도 한다:
 
     > -   단항 연산자: `+` `-` `~`
     > -   이항 연산자: `+` `-` `*` `/` `/?` `%` `|` `>>` `^` `<<` `&` `**` `//`
     > -   비교 연산자: `==` `!=` `<` `<=` `>` `>=`
-    > -   [nopython 모드]에서 지원되는 [Numpy ufuncs]
+    > -   [nopython 모드]에서 지원되는 [Numpy ufunc][Numpy ufuncs]
     > -   [numba.vectorize]를 통한 사용자 정의 [numba.DUFunc]
 
 2.  Numpy 집계 함수 `sum`, `prod`, `min`, `max`, `argmin`, `argmax`. 또한, 배열 수학 함수 `mean`, `var`, `std`.
@@ -120,9 +119,9 @@ Numba 변환 패스를 활성화시킨다.
     이는 내적 `dot` 연산과 그 후의 모든 포인트별 배열 연산을 가리킨다.
 6.  외적 `dot` 연산은 다른 차원의 배열을 반환하기 때문에 위의 커널과는 결합되지 않는다.
 
-여기서, 병렬 하드웨어의 이점을 살리기 위해 요구되는 것은 단 하나, [numba.jit]를 위한 [parallel_jit_option] 옵션을 설정하는 것이다.
+여기서, 병렬 하드웨어의 이점을 살리기 위해 요구되는 것은 단 하나, [jit][numba.jit]을 위한 [parallel][parallel_jit_option] 옵션을 설정하는 것이다.
 `logistic_regression` 함수 그 자체는 수정할 필요가 없다.
-만약에 [numba.guvectorize]를 사용하여 동일하게 병렬 구현을 하려면 
+만약에 [guvectorize][numba.guvectorize]를 사용하여 동일하게 병렬 구현을 하려면 
 병렬화될 수 있는 커널을 추출하기 위해서 코드를 광범위하게 고쳐야 하고, 이는 매우 지루하면서도 어려운 일이다.
 
 
@@ -133,7 +132,7 @@ Numba 변환 패스를 활성화시킨다.
 때때로 어떤 루프나 변환에 대한 진단을 빠뜨린다.
 {: .notice--warning}
 
-[numba.jit]에 [parallel_jit_option] 옵션의 적용은 데코레이트되는 코드를 자동적으로 병렬화하는 변환에 대한 진단 정보를 만들어 낼 수 있다.
+[jit][numba.jit]에 [parallel][parallel_jit_option] 옵션의 적용은 데코레이트되는 코드를 자동적으로 병렬화하는 변환에 대한 진단 정보를 만들어 낼 수 있다.
 이 정보는 두 가지 방법으로 접근될 수 있는데, 하나는 환경 변수 [NUMBA_PARALLEL_DIAGNOSTICS]를 설정하는 것이고
 다른 하나는 [Dispatcher.parallel_diagnostics]를 호출하는 것이다.
 두 방법 모두 같은 정보를 제공하며 `STDOUT`에 정보 출력한다.
@@ -301,7 +300,7 @@ Numba 변환 패스를 활성화시킨다.
 
 ### 병렬 진단 보고
 
-보고서는 아래와 갈이 여러 절로 분리된다:
+보고서는 아래와 같이 여러 절로 분리된다:
 
 1. 코드 주석(Code annotation)
     :   병렬 의미(parallel semantics)가 확인되고 나열될 루프를 가진 함수의 소스코드를 포함하는, 첫번째 절이다.
@@ -428,20 +427,20 @@ Numba 변환 패스를 활성화시킨다.
         숫자 `#1`은 명백히 상수이고 그래서 루프 바깥에서 끌어 올려질 수 있다.
 
 **See also:** 
-[parallel_jit_option], [Parallel FAQs]
+[parallel][parallel_jit_option], [병렬화 관련 FAQs][Parallel FAQs]
 {: .notice--info}
 
 [parallel_jit_option]: /dev/numba_user_jit#parallel-jit-option "parallel"
 [numba.jit]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit "jit"
 [numba.vectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.vectorize
 [numba.guvectorize]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.guvectorize
-[case-study-array-expressions]: http://numba.pydata.org/numba-doc/latest/developer/rewrites.html#case-study-array-expressions "케이스 스터디: 배열 표현"
+[case-study-array-expressions]: http://numba.pydata.org/numba-doc/latest/developer/rewrites.html#case-study-array-expressions 
 [Numpy ufuncs]: http://numba.pydata.org/numba-doc/latest/reference/numpysupported.html#supported-ufuncs
 [nopython 모드]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-nopython-mode
 [numba.DUFunc]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.DUFunc
 [NUMBA_PARALLEL_DIAGNOSTICS]: http://numba.pydata.org/numba-doc/latest/reference/envvars.html#envvar-NUMBA_PARALLEL_DIAGNOSTICS
 [Dispatcher.parallel_diagnostics]: http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#Dispatcher.parallel_diagnostics
-[Parallel FAQs]: /dev/numba_user_faq#parallel-faqs "병렬화 관련 FAQs"
+[Parallel FAQs]: /dev/numba_user_faq#parallel-faqs 
 [Numba IR]: http://numba.pydata.org/numba-doc/latest/glossary.html#term-numba-ir
 
 
