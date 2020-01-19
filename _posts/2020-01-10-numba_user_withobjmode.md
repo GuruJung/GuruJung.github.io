@@ -20,9 +20,9 @@ last_modified_at:
 Numba가 컴파일할 수 없는 어떤 콜백 코드를 nopython 모드에서 호출해야만 하는 경우가 있다.
 바로 아래와 같은 경우이다:
 
--   오랫동안 실행되는 JIT 함수를 위한 진행 로깅
--   Numba가 지원하지 못 하는 데이터 구조를 사용함
--   파이썬 디버거를 사용해 JIT 코드 내부를 디버깅하기.
+-   오랫동안 실행되는 JIT 함수를 위한 진행 로그
+-   Numba가 지원하지 못 하는 데이터 구조를 사용
+-   파이썬 디버거를 사용해 JIT 코드 내부를 디버깅
 
 Numba가 파이썬 콜백을 호출할 때 아래와 같은 일이 벌어진다:
 
@@ -71,14 +71,6 @@ def foo():
         y += bar(x)
     return y
 ```
-
-Note
-Known limitations:
-with-block cannot use incoming list objects.
-with-block cannot use incoming function objects.
-with-block cannot yield, break, return or raise such that the execution will leave the with-block immediately.
-with-block cannot contain with statements.
-random number generator states do not synchronize; i.e. nopython-mode and object-mode uses different RNG states.
 
 **Note:** 
 알려진 제약사항:
