@@ -11,7 +11,7 @@ tag:
   - "translation"
   - "python"
 classes: wide
-toc: true
+toc: false
 comments: true
 mathjax: true
 last_modified_at: 
